@@ -49,10 +49,16 @@ class VideoInfo:
 
                 clean_file = file.replace(',','')
 
-                detail = f'''{clean_file},{props['width']},{props['height']},{props['codec_name']},{file_size}'''
-                self.writeDebug(detail)
+                width = props['width']
+                height = props['height']
 
+                #if width == 3840 and height == 2160:
+                detail = f'''{clean_file},{width},{height},{props['codec_name']},{file_size}'''
+                
+                self.writeDebug(detail)
                 info.append(detail)
+
+                    #os.system(f'ffmpeg -i "{file_path}" -n -vf scale=-1:1080 "{os.path.dirname(os.path.abspath(__file__))}/output/{file}"')
         
         with open (os.path.dirname(os.path.abspath(__file__)) + '/info.csv', 'w') as f:
             for line in info:

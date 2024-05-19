@@ -130,3 +130,6 @@ dmypy.json
 config.py
 
 *.csv
+*.csv#
+
+/output
